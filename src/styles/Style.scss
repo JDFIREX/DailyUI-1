@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@700&display=swap');
+
+@mixin border-gradient($from, $to, $weight: 0) {
+    $mix-main: mix($from, $to);
+    $mix-sub-from: mix($mix-main, $from);
+    $mix-sub-to: mix($mix-main, $to);
+    
+    box-shadow: 0 1px 0 $weight rgba($mix-sub-to, .25),
+                0 -1px 0 $weight rgba($mix-sub-from, .25),
+                1px 0 0 $weight rgba($mix-sub-to, .25),
+                -1px 0 0 $weight  rgba($mix-sub-from, .25),
+                1px -1px 0 $weight rgba($mix-main, .5),
+                -1px 1px 0 $weight rgba($mix-main, .5),
+                1px 1px 0 $weight rgba($to, .75),
+                -1px -1px 0 $weight rgba($from, .75);
+}
+
+*{
+    margin: 0; padding: 0;
+    font-size: 18px;
+    font-family: 'Yantramanav', sans-serif;
+    color : white;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+html{
+    display: flex;
+    justify-content: center;
+}
+
+body{
+    position: relative;
+    max-width: 1440px;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: #000000;
+    transition: background-color .3s ease-in-out;
+}
+#root{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    margin-bottom: 5rem;
+}
+
+.App{
+    width: 100%;
+    heigth: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .darkmode{
+        border: none;
+        position: absolute;
+        right: 105px;
+        top: 93px;
+        width: 62px;
+        height: 31px;
+        padding: 5px;
+        border-radius: 30px;
+        background-color: #7a727281;
+        border: 2px solid rgba(255, 255, 255, 0.774);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0px 0px 30px -1px #B79132;
+
+        .darkmode__button{
+            position: absolute;
+            left: 5px;
+            transition: .2s all ease-in-out;
+            width: 21px;
+            height: 21px;
+            background-color: #414141;
+            border: 2px solid rgba(255, 255, 255, 0.774);
+            border-radius: 100%;
+        }
+        img{
+            transition: .2s all ease-in-out;
+            position: absolute;
+            right: 6px;
+            height: 18px;
+            transform: rotateZ(-20deg);
+        }
+        &:focus{
+            outline: 2px solid #B79132;
+        }
+    }
+    .darkmode:hover{
+        background-color: #272323c9;
+        .darkmode__button{
+            background-color: #2d9e4f;
+        }
+    }
+    .LogIn{
+        margin-top: 206px;
+        width: 544px;
+        height: 488px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(144.83deg, rgba(196, 196, 196, 0.4) 21.74%, rgba(196, 196, 196, 0.1) 68.85%);
+        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(30px);
+        @include border-gradient(#B79132, #6B2376);
+        border-radius: 30px;
+        transition: backdrop-filter .3s ease-in-out;
+        
+        h1,p{
+            margin-top: 20px;
+            font-size: 1.3rem;
+            opacity: 0.6;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+            transition: all .3s ease-in-out;
+
+        }
+        p{
+            margin-top: 0px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        label{
+            input{
+                border: none;
+                margin-top: 6px;
+                width: 300px;
+                height: 23px;
+                background-color: hsla(0, 0%, 77%, 0.281);
+                border-radius: 30px;
+                padding: 2px 1rem 0 1rem;
+                color: rgba(0, 0, 0, 0.301);
+                opacity: 0.6;
+                &:focus{
+                    outline: 2px solid #B79132;
+                }
+                &:hover{
+                    background-color: #7e7a7a;
+                }
+            }
+        }
+        .Email_label{
+            position: relative;
+            margin-top: 50px;
+
+            .error{
+                opacity: 0;
+                position: absolute;
+                bottom: -1rem;
+                width: 100%;
+                text-align: center;
+                font-size: .6rem;
+                color: red;
+            }
+        }
+        .password_label{
+            margin-top: 21px;
+        }
+        button{
+            margin-top: 107px;
+            width: 180px;
+            opacity: .6;
+            padding: 2px 0;
+            border-radius: 30px;
+            border: none;
+            background-color: hsla(0, 0%, 77%, 0.281);
+            transition: all .2s ease-in-out;
+            &:hover{
+                background-color: #7e7a7a;
+                p{
+                    color : rgba(14, 13, 13, 0.651);
+                }
+            }
+            &:focus{
+                outline: 2px solid #B79132;
+            }
+        }
+        
+    }
+    .user{
+        position: relative;
+        margin-top: 206px;
+        width: 544px;
+        height: 100%;
+        padding-bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(144.83deg, rgba(196, 196, 196, 0.4) 21.74%, rgba(196, 196, 196, 0.1) 68.85%);
+        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(30px);
+        @include border-gradient(#B79132, #6B2376);
+        border-radius: 30px;
+        transition: backdrop-filter .3s ease-in-out;
+
+        .img{
+            position: absolute;
+            top: -50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            background-color: black;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+                width: 50%;
+            }
+        }
+        p{
+            margin-top: 100px;
+            &:nth-child(3){
+                margin-top: 20px;
+            }
+        }
+        button{
+            margin-top: 50px;
+            width: 100px;
+            opacity: .6;
+            padding: 2px 0;
+            border-radius: 30px;
+            border: none;
+            background-color: hsla(0, 0%, 77%, 0.281);
+            transition: all .2s ease-in-out;
+            p{
+                margin-top: 0;
+            }
+            &:hover{
+                background-color: #7e7a7a;
+                p{
+                    color : rgba(14, 13, 13, 0.651);
+                }
+            }
+            &:focus{
+                outline: 2px solid #B79132;
+            }
+        }
+    }
+
+    .circles{
+        position: absolute; top: 127px;
+        margin-left: 45px;
+        width: 670px;
+        height: 635.5px;
+
+        .circle{
+            border-radius: 100%;
+        }
+        .circle-1,.circle-3,.circle-5,.circle-7{
+            background-image: linear-gradient(to right top, #babc69, #b8aa4f, #b69736, #b5831f, #b46e06);
+        }
+        .circle-1,.circle-5{
+            width: 57px;
+            height: 57px;
+        }
+        .circle-1{
+            position: relative; top: 63px; left: 141px;
+        }
+        .circle-3{
+            width: 132px;
+            height: 127px;
+            position: absolute; top: 0px; left: 450px;
+        }
+        .circle-5{
+            position: absolute; top: 373px; left: 74px;
+        }
+        .circle-7{
+            width: 83px;
+            height: 83px;
+            position: absolute; top: 502px; left: 444px;
+        }
+        .circle-2,.circle-4,.circle-6,.circle-8{
+            background-image: linear-gradient(to left top, #ae50bd, #9e41ad, #8e319e, #7e218f, #6f0c80); 
+        }
+        .circle-2,.circle-6{
+            width: 111px;
+            height: 111px;
+        }
+        .circle-2{
+            position: absolute; top: 65px; left: 170px;
+        }
+        .circle-4{
+            width: 92px;
+            height: 92px;
+            position: absolute; top: 50px; left: 527px;
+        }
+        .circle-6{
+            position: absolute; top: 390px; left: 10px;
+        }
+        .circle-8{
+            width: 231px;
+            height: 231px;
+            position: absolute; top: 315px;  right: 0;
+        }
+    }
+}
+
+.light{
+    background-color: #FFF;
+    .App{
+        .darkmode{
+            background-color: rgb(16, 212, 16);
+            box-shadow: 0px 0px 40px -10px #1f1602;
+    
+            .darkmode__button{
+                margin-left: calc(100% - 30px);
+                background-color: #FFF;
+            }
+            img{
+                margin-right: calc(100% - 30px);
+            }
+            &:focus{
+                outline: 2px solid #B79132;
+            }
+        }
+        .darkmode:hover{
+            background-color: green;
+            .darkmode__button{
+                background-color: #2d9e4f;
+            }
+        }
+        .LogIn{
+            backdrop-filter: brightness(85%) blur(30px);
+            h1{
+                opacity: 1;
+                color: white;
+                text-shadow: 0px 0px 2px  black;
+            }
+            p{
+                opacity: 1;
+                color: white;
+                text-shadow: 0px 0px 3px  black;
+            }
+            label{
+                input{
+                    background-color: rgba(255, 255, 255, 0.486);
+                    opacity: 1;
+                    &:focus{
+                        outline: 2px solid #B79132;
+                    }
+                    &:hover{
+                        background-color: #b4b3b3;
+                    }
+                }
+            }
+            button{
+                background-color: rgba(255, 255, 255, 0.486);
+                opacity: 1;
+                &:hover{
+                    background-color: #a7a0a0;
+                    p{
+                        color: white;
+                    }
+                }
+            }
+            
+        }
+        .user{
+            backdrop-filter: brightness(85%) blur(30px);
+    
+            .img{
+                background-color: rgba(0, 0, 0, 0.644);
+                border: 2px solid rgb(82, 75, 75);
+            }
+            p{
+                text-shadow: 0px 0px 3px  black;
+                opacity: 1;
+                color: white;
+            }
+            button{
+                background-color: rgba(255, 255, 255, 0.486);
+                opacity: 1;
+                p{
+                    margin-top: 0;
+                }
+                &:hover{
+                    background-color: #a7a0a0;
+                    p{
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px){
+    .App{
+        .darkmode{
+            right: 8vw;
+            top: 5vw;
+        }
+        .circles{
+            position: absolute; top: 120px;
+            margin-left: 0px;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .App{
+        padding: 0 10vw;
+        .LogIn{
+            margin-top: 150px;
+            width: 100%;
+        }
+    
+        .circles{
+            position: absolute; top: 120px;
+            width: 100%;
+            height: 100%;
+    
+            .circle-1,.circle-5{
+                width: 9.500vw;
+                height: 9.500vw;
+            }
+            .circle-1{
+                position: relative; top: 15px; left: 23.500vw;
+            }
+            .circle-3{
+                width: 22vw;
+                height: 21.167vw;
+                position: absolute; top: 0px; left: 75vw;
+            }
+            .circle-5{
+                position: absolute; top: 380px; left: 12.333vw;
+            }
+            .circle-7{
+                width: 13.833vw;
+                height: 13.833vw;
+                position: absolute; top: 300px; left: 74vw;
+            }
+            .circle-2,.circle-6{
+                width: 18.500vw;
+                height: 18.500vw;
+            }
+            .circle-2{
+                position: absolute; top: 10px; left: 28.333vw;
+            }
+            .circle-4{
+                width: 15.333vw;
+                height: 15.333vw;
+                position: absolute; top: 40px; left:87.833vw;
+            }
+            .circle-6{
+                position: absolute; top: 440px; left: 1.667vw;
+            }
+            .circle-8{
+                width: 38.500vw;
+                height: 38.500vw;
+                position: absolute; top: 360px;  right: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .App{
+        .LogIn{  
+            padding: 0 5vw;
+            height: 100%;
+            padding-bottom: 50px;
+            margin-bottom: 50px; 
+            h1,p{
+                margin-top: 25px;
+            }
+            p{
+                margin-top: 0;
+            }
+            label{
+                input{
+                    width: 100%;
+                }
+            }
+            .Email_label{
+                margin-top: 60px;
+            }
+            .password_label{
+                margin-top: 30px;
+            }
+            button{
+                margin-top: 100px;
+            }
+            
+        }
+    }
+}
